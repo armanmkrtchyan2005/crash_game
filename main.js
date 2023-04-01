@@ -16,8 +16,8 @@ const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const http_1 = __importDefault(require("http"));
 const server = http_1.default.createServer(app);
-const promises_1 = require("timers/promises");
 // import { Server } from "socket.io";
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const port = process.env.PORT || 8080;
 const socketIO = require("socket.io");
 const io = socketIO(server, {
@@ -56,12 +56,12 @@ function updateGame() {
             for (let player in playerBalances) {
                 playerBalances[player].stopped = false;
             }
-            yield (0, promises_1.setTimeout)(2000);
+            yield sleep(2000);
             isWait = false;
             for (let player in playerBalances) {
                 playerBalances[player].canPlaceBet = true;
             }
-            yield (0, promises_1.setTimeout)(5000);
+            yield sleep(5000);
             interval = setInterval(() => updateGame(), 100);
             isWait = true;
         }

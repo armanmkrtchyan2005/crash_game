@@ -3,8 +3,9 @@ const app = express();
 import http from "http";
 import { Socket } from "socket.io";
 const server = http.createServer(app);
-import { setTimeout as sleep } from "timers/promises";
 // import { Server } from "socket.io";
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const port = process.env.PORT || 8080;
 
