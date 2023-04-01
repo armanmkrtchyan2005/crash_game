@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index.ts",
-    "main": "nodemon src/main.ts"
+    "start:dev": "nodemon src/main.ts",
+    "start": "nodemon dist/main.js",
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
